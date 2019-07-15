@@ -34,25 +34,54 @@ class GameTests: XCTestCase {
         XCTAssertEqual(result, true)
     }
     
+    func testIfMoveIsWrong() {
+        game.score = 1
+        let result = game.play(move: "Fizz")
+        XCTAssertEqual(result, false)
+    }
     
+    func testIfMoveIsRightBuzz() {
+        game.score = 4
+        let result = game.play(move: "Buzz")
+        XCTAssertEqual(result, true)
+    }
     
+    func testIfMoveIsWrongBuzz() {
+        game.score = 1
+        let result = game.play(move: "Buzz")
+        XCTAssertEqual(result, false)
+    }
     
+    func testIfMoveIsRightFizzBuzz() {
+        game.score = 14
+        let result = game.play(move: "FizzBuzz")
+        XCTAssertEqual(result, true)
+    }
     
+    func testIfMoveIsWrongFizzBuzz() {
+        game.score = 1
+        let result = game.play(move: "FizzBuzz")
+        XCTAssertEqual(result, false)
+    }
     
+    func testIfMoveIsRightNumber() {
+        game.score = 1
+        let result = game.play(move: "2")
+        XCTAssertEqual(result, true)
+    }
     
+    func testIfMoveIsWrongNumber() {
+        game.score = 2
+        let result = game.play(move: "3")
+        XCTAssertEqual(result, false)
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func testIfMoveIsWrongNotInceremented() {
+        game.score = 1
+        _ = game.play(move: "Fizz")
+        XCTAssertEqual(game.score, 3)
+//        Why is this game.score, 3?
+    }
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
